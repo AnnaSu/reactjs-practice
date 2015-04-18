@@ -19,7 +19,7 @@ module.exports = {
   entry: {
     // 第一個是為了 hot module replacement 而加的，要搭配 react-hot-loader，並且 cli 要加 --hot 才能發威
     // 如果只是單純為了取代 livereload 則不需加這個，也不需 --hot
-    bundle: [ "./app/js/boot.js"]
+    bundle: [ "./app/js/boot.jsx"]
 
     // foo: ['示範另個 entry point bundle'],
     // bar: [null]

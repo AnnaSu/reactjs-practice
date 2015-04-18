@@ -4,6 +4,9 @@
   "description": "reactSeed",
   "main": "index.js",
   "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "build-dev": "webpack -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
