@@ -6,12 +6,19 @@ var AppConstants = require('../constants/AppConstants');
 
 var AppActionCreators = {
     //範例   
-        // createProduct: function(item){
-        //     AppDispatcher.handleViewAction({
-        //         actionType: AppConstants.CREATE_PRODUCT,
-        //         item: item
-        //     });
-        // }
+        addProduct: function(item){
+            AppDispatcher.handleViewAction({
+                actionType: AppConstants.CREATE_PRODUCT,
+                item: item
+            });
+        },
+        delProduct: function(index){
+        	AppDispatcher.handleViewAction({
+                actionType: AppConstants.DEL_PRODUCT,
+                index: index
+            });
+            console.log('action');
+        }
     
 
 };

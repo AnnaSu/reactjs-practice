@@ -22,9 +22,21 @@ var EventEmitter = require('events').EventEmitter; // 取得一個 pub/sub 廣�
 //     }
 // ];
 
+    var pageTitle="新增商品";
+    window.uid=0;
+    var productCart=[{productId:window.uid++,productName:'商品1',productPrice:10000,productAmount:3}];
+
+
 var Store = {};
 //Object.assign 會把所有物件屬性併到第一個物件
 Object.assign( Store, EventEmitter.prototype, {
+    getData: function(){
+        return {
+            pageTitle: pageTitle,
+            pageUserName: "annaSu",
+            productCart: productCart
+        }
+    }
 
     // getAll: function(){
     //     return {
@@ -48,12 +60,20 @@ Store.dispatchToken = AppDispatcher.register( function eventHandlers(event){
     switch (action.actionType) {
 
         
-        // case AppConstants.CREATE_PRODUCT:
-        // 	allProduct.push( action.item );
-        //     console.log(allProduct);
-        //     Store.emit( AppConstants.CHANGE_EVENT );
-        //     break;
-        
+        case AppConstants.CREATE_PRODUCT:
+        	productCart.push( action.item );
+            Store.emit( AppConstants.CHANGE_EVENT );
+            break;
+
+        case AppConstants.DEL_PRODUCT:
+            console.log('store');
+            console.log(action.index);
+            productCart.splice(action.index,1);
+
+            console.log(productCart);
+            Store.emit( AppConstants.CHANGE_EVENT );
+            break;
+
         default:
             //
     }
