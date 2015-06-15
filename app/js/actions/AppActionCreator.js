@@ -18,6 +18,13 @@ var AppActionCreators = {
                 index: index
             });
             console.log('action');
+        },
+        sliderNext:function(index){
+            console.log(index); 
+            AppDispatcher.handleViewAction({
+                actionType: AppConstants.SLIDER_NEXT,
+                index: index
+            });
         }
     
 

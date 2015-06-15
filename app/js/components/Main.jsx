@@ -1,9 +1,11 @@
-var InputBox=require("./InputBox.jsx");
-var ContactTable=require("./ContactTable.jsx");
-var myStores=require("../stores/ProductStore.js");
-var ProductCart=require("./ProductCart.jsx");
-var ProductCreate=require("./ProductCreate.jsx");
-var AppConstants=require("../constants/AppConstants.js");
+var InputBox = require("./InputBox.jsx");
+var ContactTable = require("./ContactTable.jsx");
+var myStores = require("../stores/ProductStore.js");
+var ProductCart = require("./ProductCart.jsx");
+var ProductCreate = require("./ProductCreate.jsx");
+var AppConstants = require("../constants/AppConstants.js");
+var Select = require("./Select.jsx");
+var Slides = require("./Slides.jsx");
 var Main = React.createClass({
 	//private
 	_onChange: function() {
@@ -16,12 +18,12 @@ var Main = React.createClass({
 		console.log(this.state);
 		return (
 			<div>
-				<!--<InputBox userName={this.state.pageUserName}></InputBox>-->
-				<!--<ContactTable></ContactTable>-->
+				
 				<h2>{this.state.pageTitle}</h2>
 				<ProductCreate></ProductCreate>
 				<ProductCart truth={this.state}></ProductCart>
-				
+				<Select options={this.state.brands}></Select>
+				<Slides data={this.state.productCart}></Slides>
 			</div>
 			
 		);

@@ -10,12 +10,12 @@
 // 重要：babeljs 需要這個 polyfill
 require("babel-core/polyfill");
 
-var Main=require('./components/Main.jsx')
+var Main = require('./components/Main.jsx');
 
 $(function(){
 
 
-	React.render(<Main/>,document.getElementById('container'));
+	React.render(<Main/>, document.getElementById('container'));
 
 
 });

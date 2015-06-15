@@ -7,7 +7,9 @@ var Product = React.createClass({
 				<td>{this.props.productItem.productName}</td>
 				<td>{this.props.productItem.productPrice}</td>
 				<td>{this.props.productItem.productAmount}</td>
-				<td><button onClick={this._delProduct.bind(this)}>刪除</button></td>
+				<td>
+					<button className="btn btn-danger" onClick={this._delProduct.bind(this)}>刪除</button>
+				</td>
 			</tr>
 		);
 	},

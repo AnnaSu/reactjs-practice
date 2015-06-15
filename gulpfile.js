@@ -129,7 +129,7 @@ gulp.task('dev', ['css-bundle', 'copy', 'watch'], function(){
 
     // 準備插入的 reload script
     if(options.inline){
-    devClient.push( require.resolve('webpack-dev-server/client/') + '?' + protocol + '://' + host + ':' + port );
+        devClient.push( require.resolve('webpack-dev-server/client/') + '?' + protocol + '://' + host + ':' + port );
     }
 
     // 插入 HMR script

@@ -1,5 +1,6 @@
 var Product = require('./Product.jsx');
 var action = require('../actions/AppActionCreator.js');
+
 var ProductCart = React.createClass({
 
 	render: function() {
@@ -8,7 +9,7 @@ var ProductCart = React.createClass({
 			return (<Product productItem={item} del={this._delProduct.bind(this)}></Product>);
 		},this);
 		return (
-			<table>
+			<table className="table table-hover">
 				<thead>
 					<tr>
 						<th>名稱</th>

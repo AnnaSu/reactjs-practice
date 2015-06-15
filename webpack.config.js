@@ -90,7 +90,7 @@ module.exports = {
         $: "jquery",
         jQuery: "jquery",
         "windows.jQuery": "jquery",
-        'React': 'react'
+        React: 'react'
     }),
 
   ],

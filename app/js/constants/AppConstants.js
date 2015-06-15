@@ -6,6 +6,8 @@ module.exports = keyMirror({
 	//例如 CREATE_PRODUCT: null
 	CHANGE_EVENT: null,
 	CREATE_PRODUCT: null,
-	DEL_PRODUCT: null
+	DEL_PRODUCT: null,
+	SLIDER_NEXT: null
+
 });
 

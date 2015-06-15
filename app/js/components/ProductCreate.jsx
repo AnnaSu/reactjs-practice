@@ -1,16 +1,49 @@
 var action = require('../actions/AppActionCreator.js');
 var ProductCreate = React.createClass({
 	getInitialState: function(){
-		return {productId:null,productName:'',productPrice:0,productAmount:0};
+		return {
+			productId: null, 
+			productName: '', 
+			productPrice: 200, 
+			productAmount: 1
+		};
 	},
 	render: function() {
 
 		return (
-			<div>
-				<label>商品名稱 <input type="text" value={this.state.productName} onChange={this._nameChange}/></label>
-				<label>商品價格 <input type="number" value={this.state.productPrice} onChange={this._priceChange}/></label>
-				<label>商品數量 <input type="number" value={this.state.productAmount} onChange={this._amountChange}/></label>
-				<button onClick={this._addProduct}>新增</button>
+			<div className="col-md-4">
+				<div className="form-group">
+					<label for="name">商品名稱 </label>
+					<input 
+						type="text" 
+						className="form-control" 
+						name="name" 
+						value={this.state.productName} 
+						onChange={this._nameChange}/>
+				</div>
+				<div className="form-group">
+					<label>商品價格 
+						<input 
+							type="number" 
+							className="form-control" 
+							min="200"
+							step="1000"
+							value={this.state.productPrice} 
+							onChange={this._priceChange}/>
+					</label>
+				</div>
+				<div className="form-group">
+					<label>商品數量 
+						<input 
+							type="number"
+							className="form-control"
+							min="1"
+							step="10"
+							value={this.state.productAmount} 
+							onChange={this._amountChange}/>
+					</label>
+				</div>
+				<button className="btn btn-primary" onClick={this._addProduct}>新增</button>
 			</div>
 		);
 	},
@@ -30,7 +63,12 @@ var ProductCreate = React.createClass({
 		if(this.state.productName){
 			this.state.productId = window.uid++;
 			action.addProduct(this.state);
-			this.setState({productId:null,productName:'',productPrice:0,productAmount:0});
+			this.setState({
+				productId: null, 
+				productName: '', 
+				productPrice: 200, 
+				productAmount: 1
+			});
 		}
 
 	} 
