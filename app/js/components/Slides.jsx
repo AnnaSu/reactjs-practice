@@ -1,7 +1,31 @@
 'use strict';
+var Swipe = require('swipejs');
 var SlideItem = require('./SlideItem.jsx');
 var action = require('../actions/AppActionCreator.js');
 var Slides = React.createClass({
+	componentDidMount: function () {
+      if (this.isMounted()) {
+        this.swipe = Swipe(React.findDOMNode(this), this.props);
+      }
+    },
+
+    componentDidUpdate: function () {
+      if (this.props.slideToIndex || this.props.slideToIndex === 0) {
+        this.swipe.slide(this.props.slideToIndex);
+      }
+    },
+
+    componentWillUnmount: function () {
+      this.swipe.kill();
+      delete this.swipe;
+    },
+
+    shouldComponentUpdate: function (nextProps) {
+      return (
+        (this.props.slideToIndex !== nextProps.slideToIndex) ||
+        (typeof this.props.shouldUpdate !== 'undefined') && this.props.shouldUpdate(nextProps)
+      );
+    },
 	render: function() {
 		var _index;
 		let _slideItems = this.props.data.map((item, index) => {
@@ -13,22 +37,28 @@ var Slides = React.createClass({
 						</SlideItem>
 					); 
 				});
+ 
 		return (
-			<div className="row">
-				<div className="imageSlider">
-					<a className="sliderControl left" onClick={this._clickHandler.bind(this, _index-1)}><span className="glyphicon glyphicon-chevron-left"></span></a>
-					<div className="sliderItems">
-						{_slideItems}
-					</div>
-					<a className="sliderControl right" onClick={this._clickHandler.bind(this, _index+1)}><span className="glyphicon glyphicon-chevron-right"></span></a>
+			<div className="swipe">
+				<div className="swipe-wrap">
+					{_slideItems}
 				</div>
+				<span className="slider-control left" onClick={this._prev}>
+					<i className="glyphicon glyphicon-chevron-left"></i>
+				</span>
+				<span className="slider-control right" onClick={this._prev}>
+					<i className="glyphicon glyphicon-chevron-right"></i>
+				</span>
 			</div>
 		);
 	},	
-	_clickHandler: function(index, event){
-		event.preventDefault();
-		console.log(event);
-		action.sliderNext(index);
+
+	_next: function () {
+		this.swipe.next();
+	},
+
+	_prev: function () {
+		this.swipe.prev();
 	}
 });
 

@@ -6,9 +6,10 @@ var SlideItem = React.createClass({
 			_show = 'show';
 		}
 		return (
-			<div className={_show+' item'}>
-				<img className="slidesImage" src={this.props.data.imageUrl} alt="產品圖片"/>
-				<div className="slidesImageDescription">
+
+			<div>
+				<img className="slides-image" src={this.props.data.imageUrl} alt="產品圖片"/>
+				<div>
 					<h1>{this.props.data.productName}</h1>	
 				</div>
 			</div>
